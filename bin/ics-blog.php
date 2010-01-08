@@ -26,6 +26,88 @@ include_once("class.config.php");
 
 class ics_blog {
 
+### public functions
+
+	# ics control functions
+
+	# display list with entries, with link, date, author etc
+	function showlatestfull($limit=10,$tags=0) {
+		$begin = $_GET["begin"];
+		$this->cblog->showlatest($limit,$begin,$tags);
+	}
+
+	# display list with entries, with link, date, author etc but limited header size and characters
+	function showlatestbrief($limit=10,$tags=0) {
+		$begin = $_GET["begin"];
+		$this->cblog->showlatestbrief($limit,$begin,$tags);
+	}
+
+	# displays a list of entries, only with a links to each entry
+	function showlatestlist($limit=10,$tags=0) {
+		$begin = 0;
+		$this->cblog->showlatestlist($limit,$begin,$tags);
+	}
+
+	# display one entry, with link, date, author etc
+	function showitemfull($uid=FALSE) {
+		if($uid == FALSE) {
+			$uid = $_GET["uid"];
+		}
+		if(!($uid == '')) {
+			$this->cblog->showentry($uid);
+		}
+	}
+
+	# display one entry, without link and information about date, author etc
+	function showitembrief($uid=FALSE) {
+		if($uid == FALSE) {
+			$uid = $_GET["uid"];
+		}
+		if(!($uid == '')) { 
+			$this->cblog->showshortentry($uid);
+		}	
+	}
+
+	# dividers etc
+
+	function showdelimiter() {
+		$this->cblog->showdelimiter();
+	}
+
+	function poweredby() {
+		$this->cblog->showpoweredby();
+	}
+
+	# cascading style sheets html code
+
+	function showcss() {
+		$this->cblog->showcssinclude();
+	}
+
+
+### end public functions
+
+	# obsolete functions - will be removed in later version
+
+	function showlatest($limit=10,$tags=0) {
+		$this->showlatestfull($limit,$tags);
+	}
+
+	function showentry($uid=FALSE) {
+		$this->showitemfull($uid);
+	}
+
+	function showlist($limit=10,$tags=0) {
+		$this->showlatestlist($limit,$tags);
+	}
+
+	function showshortentry($uid=FALSE) {
+		$this->showitembrief($uid);
+	}
+
+	
+### end public functions
+
 	# DEBUG : -1 = OFF; 3 = FULL
 	private $d = -1;
 
@@ -45,46 +127,6 @@ class ics_blog {
 		}
 		
 		$this->cblog->addjournal($this->cplugin);
-	}
-
-	function showlatest($limit=10,$tags=0) {
-		$begin = $_GET["begin"];
-		$this->cblog->showlatest($limit,$begin,$tags);
-	}
-
-	function showlist($limit=10,$tags=0) {
-		$begin = 0;
-		$this->cblog->showsummary($limit,$begin,$tags);
-	}
-
-	function showdelimiter() {
-		$this->cblog->showdelimiter();
-	}
-
-	function showshortentry($uid=FALSE) {
-		if($uid == FALSE) {
-			$uid = $_GET["uid"];
-		}
-		if($uid == '' || $this->cblog->showshortentry($uid) == FALSE) {
-			#$this->showlist();
-		}
-	}
-	
-	function showentry($uid=FALSE) {
-		if($uid == FALSE) {
-			$uid = $_GET["uid"];
-		}
-		if($uid == '' || $this->cblog->showentry($uid) == FALSE) {
-			#$this->showlist();
-		}
-	}
-
-	function showcss() {
-		$this->cblog->showcssinclude();
-	}
-
-	function poweredby() {
-		$this->cblog->showpoweredby();
 	}
 }
 

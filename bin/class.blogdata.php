@@ -25,7 +25,7 @@ include_once("class.config.php");
 
 class blogdata {
 
-	private $listtype = array("LATEST" => 0,"SUMMARY" => 1);
+	private $listtype = array("LATESTFULL" => 0,"LATESTLIST" => 1,"LATESTBRIEF" => 2);
 //--
 
 	function showdelimiter() {
@@ -38,17 +38,21 @@ class blogdata {
 	}
 
 	function showlatest($limit=10,$start=0,$tags=0) {
-		$this->showgenericlist($this->listtype["LATEST"],$limit,$start,$tags);
+		$this->showgenericlist($this->listtype["LATESTFULL"],$limit,$start,$tags);
 	}
 
-	function showsummary($limit=10,$start=0,$tags=0) {
-		$this->showgenericlist($this->listtype["SUMMARY"],$limit,$start,$tags);
+	function showlatestlist($limit=10,$start=0,$tags=0) {
+		$this->showgenericlist($this->listtype["LATESTLIST"],$limit,$start,$tags);
+	}
+
+	function showlatestbrief($limit=10,$start=0,$tags=0) {
+		$this->showgenericlist($this->listtype["LATESTBRIEF"],$limit,$start,$tags);
 	}
 
 	function showshortentry($uid) {
                 foreach ($this->entries as $e) {
                         if(chop($e["UID"]) == $uid) {
-                                $this->showshortsingle($e);
+                                $this->showitembrief($e);
                                 return TRUE;
                         }
                 }
@@ -58,7 +62,7 @@ class blogdata {
 	function showentry($uid) {
 		foreach ($this->entries as $e) {
 			if(chop($e["UID"]) == $uid) {
-				$this->showsingle($e);
+				$this->showitem($e);
 				return TRUE;
 			}
 		}
@@ -81,7 +85,7 @@ class blogdata {
 	public $ver = "0.14";
 	
 	private $entries = array();
-	private $showtype = array("ALL" => 0, "SUMMARY" => 1, "SHORT" => 2);
+	private $showtype = array("ITEMFULL" => 0, "ITEMBRIEF" => 1, "ITEMLIST" => 2, "ITEMBRIEFLIST" => 3);
 
 	function __construct($debug=-1) {
 		$this->dbg = new debug($debug);
@@ -89,7 +93,7 @@ class blogdata {
 	}
 
 	function outputdetailsp($msg) {
-                $this->output("<P class=\"".$this->conf->details_p."\">");
+                $this->output("<P class=\"".$this->conf->css_details_1."\">");
                 $this->output($msg."</P>");
 	}
 
@@ -113,17 +117,22 @@ class blogdata {
 				break;
 			}
 			switch($type) {
-			case $this->listtype["LATEST"]:
+			case $this->listtype["LATESTFULL"]:
 				if($i > 1) { $this->showdelimiter(); }
-				$this->showsingle($e);
+				$this->showitem($e);
 				break;
-			case $this->listtype["SUMMARY"]:
+			case $this->listtype["LATESTBRIEF"]:
+				if($i > 1) { $this->showdelimiter(); }
+				$this->showitembrieflist($e);
+				break;
+			case $this->listtype["LATESTLIST"]:
 				$this->showtitle($e);
 				break;
 			}
 		}
 		switch($type) {
-		case $this->listtype["LATEST"]:
+		case $this->listtype["LATESTFULL"]:
+		case $this->listtype["LATESTBRIEF"]:
 			if ($i < $num) { $this->shownavigation($limit,$start,$num); }
 			break;
 		}
@@ -153,40 +162,54 @@ class blogdata {
 	}
 
 	private function showtitle($entry) {
-		$this->showgeneric($entry,$this->showtype["SUMMARY"]);
+		$this->showgenericitem($entry,$this->showtype["ITEMLIST"]);
 	}
 	
-	private function showsingle($entry) {
-		$this->showgeneric($entry,$this->showtype["ALL"]);		
+	private function showitem($entry) {
+		$this->showgenericitem($entry,$this->showtype["ITEMFULL"]);		
 	}
 
-        private function showshortsingle($entry) {
-                $this->showgeneric($entry,$this->showtype["SHORT"]);
+        private function showitembrief($entry) {
+                $this->showgenericitem($entry,$this->showtype["ITEMBRIEF"]);
         }
 
-	private function showgeneric($entry,$type) {
+        private function showitembrieflist($entry) {
+                $this->showgenericitem($entry,$this->showtype["ITEMBRIEFLIST"]);
+        }
+
+	private function showgenericitem($entry,$type) {
 		$e = $entry;
 		$c = $this->conf;
 		
 		switch($type) {
-		case $this->showtype["SUMMARY"]:
-			$this->output("<P class=\"".$c->summary_small."\">- <A href=\"".$c->uid."".$e["UID"]."\">".$e["SUMMARY"]."</A> (".$this->contact($e["CONTACT"]).") - ".$e["DTSTART"]."</P>");
+		case $this->showtype["ITEMLIST"]:
+			$this->output("<P class=\"".$c->css_summary_3."\">- <A href=\"".$c->uid."".$e["UID"]."\">".$e["SUMMARY"]."</A> (".$this->contact($e["CONTACT"]).") - ".$e["DTSTART"]."</P>");
 			break;
-		case $this->showtype["SHORT"]:
-                        $this->output("<P class=\"".$c->summary_p."\">".$e["SUMMARY"]."</P>");
-                        $this->output("<P class=\"".$c->description_p."\">".$e["DESCRIPTION"]."</P>");
+		case $this->showtype["ITEMBRIEF"]:
+                        $this->output("<P class=\"".$c->css_summary_1."\">".$e["SUMMARY"]."</P>");
+                        $this->output("<P class=\"".$c->css_descrip_1."\">".$e["DESCRIPTION"]."</P>");
 			break;
-		case $this->showtype["ALL"]:
-			$this->output("<P class=\"".$c->summary_p."\"><A href=\"".$c->uid."".$e["UID"]."\">".$e["SUMMARY"]."</A></P>");
-			$this->output("<P class=\"".$c->details_p."\">Date: ".$e["DTSTART"]);
+		case $this->showtype["ITEMBRIEFLIST"]:
+			$this->output("<P class=\"".$c->css_summary_2."\"><A href=\"".$c->uid."".$e["UID"]."\">".$e["SUMMARY"]."</A></P>");
+			$this->output("<P class=\"".$c->css_details_2."\">Date: ".$e["DTSTART"]);
+			$this->output(" / Author: ".$this->contact($e["CONTACT"]));
+			if($e["LAST-MODIFIED"] != FALSE && $e["LAST-MODIFIED"] != $e["CREATED"]) {
+				$this->output(" / Last-modified: ".$e["LAST-MODIFIED"]);
+			}
+			$this->output("</P>");
+			$this->output("<P class=\"".$c->css_descrip_2."\">".substr($e["DESCRIPTION"],0,200)."...</P>");
+			break;
+		case $this->showtype["ITEMFULL"]:
+			$this->output("<P class=\"".$c->css_summary_1."\"><A href=\"".$c->uid."".$e["UID"]."\">".$e["SUMMARY"]."</A></P>");
+			$this->output("<P class=\"".$c->css_details_1."\">Date: ".$e["DTSTART"]);
 			$this->output(" / Author: ".$this->contact($e["CONTACT"]));
 			$this->output(" / Status: ".$e["STATUS"]);
 			$this->output(" / Tags: ".$e["CATEGORY"]);
-			if($e["LAST-MODIFIED"] != FALSE) {
+			if($e["LAST-MODIFIED"] != FALSE && $e["LAST-MODIFIED"] != $e["CREATED"]) {
 				$this->output("<BR>Last-modified: ".$e["LAST-MODIFIED"]);
 			}
 			$this->output("</P>");
-			$this->output("<P class=\"".$c->description_p."\">".$e["DESCRIPTION"]."</P>");
+			$this->output("<P class=\"".$c->css_descrip_1."\">".$e["DESCRIPTION"]."</P>");
 			break;
 		}
 	}

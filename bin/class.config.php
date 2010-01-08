@@ -30,12 +30,21 @@ class config {
 
 	public $uid = "entry.php?uid=";
 
-	public $summary_p = "summary";
-	public $details_p = "details";
-	public $description_p = "description";
+	# standard text
+	public $css_summary_1 = "ics_h1";
+	public $css_details_1 = "ics_d1";
+	public $css_descrip_1 = "ics_b1";
 
-	public $summary_small = "summary_small";
-	
+	# brief
+	public $css_summary_2 = "ics_h2";
+	public $css_details_2 = "ics_d2";
+	public $css_descrip_2 = "ics_b2";
+
+	# list
+	public $css_summary_3 = "ics_h3";
+	public $css_details_3 = "ics_d3";
+	public $css_descrip_3 = "ics_b3";
+
 	public $author_default = "Anon";
 }
 
