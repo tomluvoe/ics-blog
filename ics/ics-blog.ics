@@ -17,7 +17,7 @@ SUMMARY:Project requirements
 DESCRIPTION:Non-formal. Shown here to give an idea of the basic requirements of the program. I see no point to formalize them into single statement requirements at this time.
 
 <ol>
-<li> The program shall support "most" web server configurations without any program changes, i.e. it shall be written in a standard programming language that exist on most web servers. Project decision: PHP
+<li> The program shall support "most" web server configurations without any adaptions, i.e. it shall be written in a standard programming language that exist on most web servers. Project decision: PHP
 <li> Installation and configuration must be simple (must take less than 15 minutes). The configuration settings shall be stored in one single PHP class.
 <li> Integration of ics-blog to a web site must be possible to do with maximum 5 PHP class and or function calls from an external index file. 
 <li> It shall be simple to edit and add entries to the blog. Project decision: Use iCalendar files for data storage. They can be created and edited with almost any calendar program.</ol>
@@ -34,8 +34,9 @@ STATUS:DRAFT
 CLASS:PUBLIC
 CATEGORY:ics-blog
 SUMMARY:Current project status
-DESCRIPTION:Ics-blog alpha has been released into the open through http://www.samoht.se and SourceForge.net. Current running installations of Ics-blog are <a href="http://www.samoht.se/blog/">the weblog</a> and the <a href="http://www.samoht.se/ics-blog/">ics-blog project web site</a>. Both share the same program installation and only point to different iCalendar files.
+DESCRIPTION:Ics-blog (beta) has been released into the open through its project site <a href="http://www.samoht.se/">samoht.se</a> and SourceForge.net. Current running installations of Ics-blog are <a href="http://www.samoht.se/blog/">the weblog</a> and the <a href="http://www.samoht.se/ics-blog/">ics-blog project web site</a>. Both share the same program installation and only point to different iCalendar files.
 <ul>
+<li>Ics-Blog 0.15 redefines the cascading style sheets in order to become more generic and easy to adapt, as well as improving the interfaces and ics file parsing
 <li>Ics-Blog 0.14 adds support for showing a subset of the available calendar entries and browsing between them
 <li>Ics-Blog 0.13 improves the ics parsing for Gnome Evolution iCalendar files
 <li>Ics-Blog 0.12 introduces a more robust parse engine for ics files.
@@ -52,10 +53,10 @@ UID:purpose.ics-blog
 CONTACT:Tom
 STATUS:DRAFT
 CLASS:PUBLIC
-LAST-MODIFIED:20091121T080000
+LAST-MODIFIED:20100119T080000
 CATEGORY:ics-blog
 SUMMARY:Project purpose and goals
-DESCRIPTION:Turn your calendar into a blog! <br><br>The purpose of ics-blog is to release a simple blog management system that does not rely on an external data base installation. This is to allow for users to set up a blog on a basic web server. 
+DESCRIPTION:Turn your calendar into a blog! <br><br>The purpose of ics-blog is to release a simple blog management system that does not rely on an external data base. This to allow for users to set up a blog on a bare web server with only PHP support. 
 END:VEVENT
 END:VCALENDAR
 

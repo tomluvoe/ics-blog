@@ -1,4 +1,4 @@
-ICS-BLOG 0.14
+ICS-BLOG 0.15
 *************
 
 Ics-Blog, Copyright 2009-2010 Thomas Larsson.
@@ -7,6 +7,7 @@ http://www.gnu.org/licenses/gpl.txt
 
 * Change log
 ============
+-> 0.15 - redefined the css and improved the interface
 -> 0.14 - added functionality to show a subset of entries in one page
 -> 0.13 - improved parsing to support Gnome Evolution ics calendars
 -> 0.12 - rewrote the state machine for parsing iCalendar
@@ -56,10 +57,10 @@ http://www.gnu.org/licenses/gpl.txt
   to the beginning of your php file in order to load ics-blog.
   (assuming that the index.php file is located in the "root".)
 
-- Open an ics file from default location ./ics
+- Open an ics file (relative path from php file) 
 
 <?php
-  $icsblog = new ics_blog("ics-blog.ics");
+  $icsblog = new ics_blog("ics/ics-blog.ics");
 ?>
 
 - Also within the HTML head, show the style-sheets
@@ -68,11 +69,13 @@ http://www.gnu.org/licenses/gpl.txt
   $icsblog->showcss();
 ?>
 
-- In your HTML body tag, use any of the following function calls
+- In your HTML body tag, use e.g. any of the following function calls,
+  (open the file /bin/ics-blog.php - "public functions" - too view all 
+   possible function calls)
 
 <?php
-  $icsblog->showlist(5);
-  $icsblog->showlatest(100);
+  $icsblog->showlatestlist(5);
+  $icsblog->showlatestfull(100);
   $icsblog->showdelimiter();
   $icsblog->poweredby();
 ?>

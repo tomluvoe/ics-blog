@@ -31,43 +31,51 @@ class ics_blog {
 	# ics control functions
 
 	# display list with entries, with link, date, author etc
-	function showlatestfull($limit=10,$tags=0) {
+	function showlatestfull($limit=10,$relurl="",$tags=0) {
 		$begin = $_GET["begin"];
-		$this->cblog->showlatest($limit,$begin,$tags);
+		$this->cblog->showlatest($limit,$begin,$tags,$relurl);
 	}
 
 	# display list with entries, with link, date, author etc but limited header size and characters
-	function showlatestbrief($limit=10,$tags=0) {
+	function showlatestbrief($limit=10,$relurl="",$tags=0) {
 		$begin = $_GET["begin"];
-		$this->cblog->showlatestbrief($limit,$begin,$tags);
+		$this->cblog->showlatestbrief($limit,$begin,$tags,$relurl);
 	}
 
 	# displays a list of entries, only with a links to each entry
-	function showlatestlist($limit=10,$tags=0) {
+	function showlatestlist($limit=10,$relurl="",$tags=0) {
 		$begin = 0;
-		$this->cblog->showlatestlist($limit,$begin,$tags);
+		$this->cblog->showlatestlist($limit,$begin,$tags,$relurl);
 	}
 
 	# display one entry, with link, date, author etc
-	function showitemfull($uid=FALSE) {
+	function showitemfull($uid=FALSE,$relurl="") {
 		if($uid == FALSE) {
 			$uid = $_GET["uid"];
 		}
 		if(!($uid == '')) {
-			$this->cblog->showentry($uid);
+			$this->cblog->showentry($uid,$relurl);
 		}
 	}
 
-	# display one entry, without link and information about date, author etc
-	function showitembrief($uid=FALSE) {
+	# display one entry, without link information about date, author etc
+	function showitembrief($uid=FALSE,$relurl="") {
 		if($uid == FALSE) {
 			$uid = $_GET["uid"];
 		}
 		if(!($uid == '')) { 
-			$this->cblog->showshortentry($uid);
+			$this->cblog->showshortentry($uid,$relurl);
 		}	
 	}
 
+	function showitemheader($uid=FALSE,$relurl="") {
+                if($uid == FALSE) {
+                        $uid = $_GET["uid"];
+                }
+                if(!($uid == '')) {
+                        $this->cblog->showentryhead($uid,$relurl);
+                }      
+	}
 	# dividers etc
 
 	function showdelimiter() {
@@ -90,19 +98,19 @@ class ics_blog {
 	# obsolete functions - will be removed in later version
 
 	function showlatest($limit=10,$tags=0) {
-		$this->showlatestfull($limit,$tags);
+		$this->showlatestfull($limit,'',$tags);
 	}
 
 	function showentry($uid=FALSE) {
-		$this->showitemfull($uid);
+		$this->showitemfull($uid,'');
 	}
 
 	function showlist($limit=10,$tags=0) {
-		$this->showlatestlist($limit,$tags);
+		$this->showlatestlist($limit,'',$tags);
 	}
 
 	function showshortentry($uid=FALSE) {
-		$this->showitembrief($uid);
+		$this->showitembrief($uid,'');
 	}
 
 	
@@ -115,10 +123,13 @@ class ics_blog {
 	private $cblog;
 	private $cconf;	
 
-	function __construct($icsfile = "blog.ics") {
+	function __construct($icsfile = "blog.ics", $debug = FALSE) {
+
+		if($debug != FALSE) {
+			$this->d = $debug;
+		}
 
 		$this->cconf = new config($this->d);
-		#$this->cplugin = new vjournal($this->d);
 		$this->cplugin = new vevent($this->d);
 		$this->cblog = new blogdata($this->d);
 		

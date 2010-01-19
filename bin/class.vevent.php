@@ -143,10 +143,10 @@ class vevent {
 						break;
 					case "DTSTAMP":
 					case "DTSTART":
-					case "CREATED":
 						$this->dbg->msg("DEBUG","Parseline: Store ".$this->property." : ".$this->simpledate($current_line));
 						$this->entry[$this->property] = $this->entry[$this->property].$this->simpledate($current_line);
 						break;
+					case "CREATED":
 					case "LAST-MODIFIED":
 						$this->dbg->msg("DEBUG","Parseline: Store ".$this->property." : ".$this->simpledate($current_line));
 						$this->entry[$this->property] = $this->entry[$this->property].$this->simpledate($current_line,TRUE);
@@ -168,7 +168,7 @@ class vevent {
 			case 16:
 			case 15:
 				if($time == TRUE) {
-					$tim = " - ".substr($buf,9,2).":".substr($buf,11,2).":".substr($buf,13,2);
+					$tim = " at ".substr($buf,9,2).":".substr($buf,11,2).":".substr($buf,13,2);
 				}
 			case 14:
 			case 13:
@@ -186,7 +186,7 @@ class vevent {
 	}
 
 	private function htmlize($buf) {
-		$buf = preg_replace("/\\\\n/","<BR>",$buf);
+		$buf = preg_replace("/(\\\\n)+/","\n<P>",$buf);
 		$buf = preg_replace("/\\\\,/",",",$buf);
 		$buf = preg_replace("/\\\\\"/","\"",$buf);
 		$buf = preg_replace("/\\\\;/",";",$buf);

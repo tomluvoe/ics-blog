@@ -24,28 +24,22 @@ class config {
 
 	public $csspath = "/~me/css/";
 
-	public $icspath = "./ics/";
+	public $icspath = "";
 	public $icsblogcss = "ics-blog.css";
 	public $icsmaincss = "main.css";
 
 	public $uid = "entry.php?uid=";
 
 	# standard text
-	public $css_summary_1 = "ics_h1";
-	public $css_details_1 = "ics_d1";
-	public $css_descrip_1 = "ics_b1";
+	public $css_header   = "ics_header";
+	public $css_author   = "ics_author";
+	public $css_bodytext = "ics_bodytext";
+	public $css_modified = "ics_modified";
+	public $css_powered  = "ics_powered";
+	public $css_navigate = "ics_navigation";
+	public $css_list     = "ics_listheader";
 
-	# brief
-	public $css_summary_2 = "ics_h2";
-	public $css_details_2 = "ics_d2";
-	public $css_descrip_2 = "ics_b2";
-
-	# list
-	public $css_summary_3 = "ics_h3";
-	public $css_details_3 = "ics_d3";
-	public $css_descrip_3 = "ics_b3";
-
-	public $author_default = "Anon";
+	public $author_default = "Author";
 }
 
 ?>

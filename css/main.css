@@ -1,59 +1,58 @@
 body {
 	background: #fff;
-	font-family: sans-serif;
-	font-size: 11px;
+	font-family: serif;
 	margin: 0px;
 }
-a:link,a:visited,a:active {
-	color: #000;
+.head {
+	font-size: 40px;
+	letter-spacing: 0.7px;
+	padding-bottom: 14px;
+}
+.welcome {
+	font-size: 20px;
+	color: #d70;
+}
+.samoht {
+        color: #d70;
+	color: #9a9e23;
 }
 a:hover {
-	border-bottom: 0px;
-	text-decoration: none;
+	text-decoration: underline;
 }
 table.main {
 	width: 100%;
 	border-spacing: 0px;
 	height: 100%;
+	font-size: 15px;
 }
 td.top {
-	background: #fff;
-	color: #333;
-	font-size: 11px;
-	font-weight: bold;
-	padding-left: 10px;
+	font-family: sans-serif;
+	color: #000;
+	font-weight: normal;
+	font-size: 13px;
+	padding-left: 25px;
 	padding-top: 6px;
 	padding-bottom: 6px;
-	border-bottom: 1px solid #555;
+	border-bottom: 1px solid #aaa;
+}
+a.top {
+	color: #000;
 }
 td.main {
-	font-family: sans-serif;	
-        background: #fff;
 	height: 100%;
-	width: 675px;
+	width: 550px;
 	vertical-align: top;
 	padding-top: 30px;
-	padding-left: 10px;
+	padding-left: 25px;
 	padding-bottom: 20px;
-	padding-right: 100px;
-	font-size: 12px;
+	padding-right: 150px;
 }
 blockquote {
-	font-family: sans-serif;
-	background: #f5ffca;
+	font-family: serif;
 	background: #ffd;
 	border: solid 1px #fea;
+	border-left: solid 5px #fea;
+	border-right: solid 2px #fea;
 	padding: 10px;
-}
-h1 {
-	font-family: serif;
-	font-weight: normal;
-	font-size: 24px;
-	color: #aa0000;
-}
-h2 {
-	font-family: serif;
-	font-weight: normal;
-	font-size: 20px;
-	color: #aa0000;
+	font-size: 12px;
 }

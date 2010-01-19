@@ -7,7 +7,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $include_path);
 
 include("ics-blog.php");
 
-$icsblog = new ics_blog("ics-blog.ics");
+$icsblog = new ics_blog("ics/ics-blog.ics");
 
 $icsblog->showcss();
 ?>
@@ -37,17 +37,17 @@ Ics-Blog ::
 
 <td class="main">
 
-<h1>Ics Blog</h1>
+<div class="head">Ics Blog</div>
 
-Ics Blog is a simple blog management system based on the iCalendar standard (RFC 2445). It is written in PHP and compatible with all web servers supporting PHP and does not depend on any database - all data is stored in iCalendar .ics files.
+Ics Blog is a simple blog management system based on the iCalendar standard (RFC 2445). It is written in PHP and compatible with all web servers supporting PHP. Ics Blog does not depend on any external database as all data is stored in iCalendar .ics files.
 
-<p>Please visit ics-blog's <a href="http://sourceforge.net/projects/ics-blog/">Sourceforge.net project page</a>. All program releases will be available on the project page.
+<p>Please visit ics-blog's <a href="http://www.samoht.se/ics-blog/">project web site</a> and <a href="http://sourceforge.net/projects/ics-blog/">Sourceforge.net project page</a>. All program releases will be available on both sites.
 
-<h2>Latest news</h2>
+<div class="ics_header">Latest news</div>
 
 <?php
 
-$icsblog->showlist(3);
+$icsblog->showlatestlist();
 $icsblog->showdelimiter();
 
 $icsblog->showshortentry("purpose.ics-blog");

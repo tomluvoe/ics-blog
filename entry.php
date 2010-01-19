@@ -9,7 +9,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $include_path);
 
 include("ics-blog.php");
 
-$icsblog = new ics_blog("ics-blog.ics");
+$icsblog = new ics_blog("ics/ics-blog.ics");
 $icsblog->showcss();
 ?>
 </head>
