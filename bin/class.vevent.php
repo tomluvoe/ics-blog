@@ -152,6 +152,7 @@ class vevent {
 						$this->entry[$this->property] = $this->entry[$this->property].$this->simpledate($current_line,TRUE);
 						break;
 					default:
+						$current_line = ltrim($current_line);
 						$current_line = $this->htmlize($current_line);
 						$this->dbg->msg("DEBUG","Parseline: Store ".$this->property." : ".$current_line);
 						$this->entry[$this->property] = $this->entry[$this->property].$current_line;

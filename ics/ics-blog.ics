@@ -28,7 +28,7 @@ DTSTAMP:20091121
 DTSTART:20091021T080000
 DTEND:20091021T090000
 UID:status.ics-blog
-LAST-MODIFIED:20100107T120000
+LAST-MODIFIED:20100523T120000
 CONTACT:Tom
 STATUS:DRAFT
 CLASS:PUBLIC
@@ -36,6 +36,7 @@ CATEGORY:ics-blog
 SUMMARY:Current project status
 DESCRIPTION:Ics-blog (beta) has been released into the open through its project site <a href="http://www.samoht.se/">samoht.se</a> and SourceForge.net. Current running installations of Ics-blog are <a href="http://www.samoht.se/blog/">the weblog</a> and the <a href="http://www.samoht.se/ics-blog/">ics-blog project web site</a>. Both share the same program installation and only point to different iCalendar files.
 <ul>
+<li>Ics-Blog 0.16 adds support for urls spanning several lines in an ics file
 <li>Ics-Blog 0.15 redefines the cascading style sheets in order to become more generic and easy to adapt, as well as improving the interfaces and ics file parsing
 <li>Ics-Blog 0.14 adds support for showing a subset of the available calendar entries and browsing between them
 <li>Ics-Blog 0.13 improves the ics parsing for Gnome Evolution iCalendar files

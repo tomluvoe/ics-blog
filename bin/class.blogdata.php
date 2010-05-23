@@ -42,7 +42,7 @@ class blogdata {
 	}
 
 	function showlatestlist($limit=10,$start=0,$tags=0,$relurl="") {
-		$this->showgenericlist($this->listtype["LATESTLIST"],$limit,$start,$tags,$relurl);
+		$this->showgenericlist($this->listtype["LATESTLIST"],$limit,$start,$tags,$relurl," | ");
 	}
 
 	function showlatestbrief($limit=10,$start=0,$tags=0,$relurl="") {
@@ -92,7 +92,7 @@ class blogdata {
 	public $dbg;
 	private $conf;
 
-	public $ver = "0.15";
+	public $ver = "0.16";
 	
 	private $entries = array();
 	private $showtype = array("ITEMFULL" => 0, "ITEMBRIEF" => 1, "ITEMLIST" => 2, "ITEMBRIEFLIST" => 3);
@@ -107,7 +107,7 @@ class blogdata {
 		$this->dbg->msg("DEBUG","Added entries to blog data.");
 	}
 
-	private function showgenericlist($type=0,$limit=10,$start=0,$tags=0,$relurl="") {
+	private function showgenericlist($type=0,$limit=10,$start=0,$tags=0,$relurl="",$delimiter="") {
 		$i = 0;
 		$num = count($this->entries);
 		$sta = $start;
@@ -132,6 +132,7 @@ class blogdata {
 				break;
 			case $this->listtype["LATESTLIST"]:
 				$this->showtitle($e,$relurl);
+				$this->output($delimiter);
 				break;
 			}
 		}

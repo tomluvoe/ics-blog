@@ -98,19 +98,19 @@ class ics_blog {
 	# obsolete functions - will be removed in later version
 
 	function showlatest($limit=10,$tags=0) {
-		$this->showlatestfull($limit,'',$tags);
+		$this->showlatestfull($limit,"",$tags);
 	}
 
 	function showentry($uid=FALSE) {
-		$this->showitemfull($uid,'');
+		$this->showitemfull($uid);
 	}
 
 	function showlist($limit=10,$tags=0) {
-		$this->showlatestlist($limit,'',$tags);
+		$this->showlatestlist($limit,"",$tags);
 	}
 
 	function showshortentry($uid=FALSE) {
-		$this->showitembrief($uid,'');
+		$this->showitembrief($uid);
 	}
 
 	
