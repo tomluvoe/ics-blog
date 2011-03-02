@@ -1,7 +1,7 @@
 <?php
 
 #
-#    ICS-BLOG - Copyright 2009-2010 Thomas Larsson
+#    ICS-BLOG - Copyright 2009-2011 Thomas Larsson
 #
 #    This file is part of Ics-Blog.
 #
@@ -238,9 +238,8 @@ class vevent {
 
 		if($e["UID"] != FALSE &&
 		   $e["DTSTAMP"] != FALSE &&
-		   $e["SUMMARY"] != FALSE &&
-		   strpos($e["CLASS"],"PUBLIC") === 0  &&
-		   (strpos($e["STATUS"],"DRAFT")=== 0 || strpos($e["STATUS"],"FINAL")=== 0)) {
+		   $e["SUMMARY"] != FALSE 
+			) {
 		   	$this->dbg->msg("DEBUG","Entry (".$e["UID"].") stored.");
 			return TRUE;
 		}
@@ -250,7 +249,19 @@ class vevent {
 	}
 	
 	private function storeentry() {
+		$this->dbg->msg("DEBUG","Store entry dated ".$this->entry["DTSTART"]);
+		$i = 0;
+		foreach ($this->entries as $e) {
+			if($e["DTSTART"] > $this->entry["DTSTART"]) {
+				$this->dbg->msg("DEBUG","Store entry at place ".$i." in array.");
+				break; 
+			} else { 
+				$i++; 
+			}
+		}
+		$e2 = array_splice($this->entries,$i);
 		$this->entries[] = $this->entry;
+		$this->entries = array_merge($this->entries,$e2);
 	}
 }
 

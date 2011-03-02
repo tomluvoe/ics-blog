@@ -1,7 +1,7 @@
 <?php
 
 #
-#    ICS-BLOG - Copyright 2009-2010 Thomas Larsson
+#    ICS-BLOG - Copyright 2009-2011 Thomas Larsson
 #
 #    This file is part of Ics-Blog.
 #
@@ -22,7 +22,7 @@
 
 class config {
 
-	public $csspath = "/~me/css/";
+	public $csspath = "/css/";
 
 	public $icspath = "";
 	public $icsblogcss = "ics-blog.css";

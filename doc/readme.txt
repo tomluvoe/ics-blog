@@ -1,12 +1,13 @@
-ICS-BLOG 0.15
-*************
-
-Ics-Blog, Copyright 2009-2010 Thomas Larsson.
-Ics-Blog is released under the GNU Public License.
+ICS-BLOG 1.0
+************
+Ics-blog, Copyright 2009-2011 Thomas Larsson.
+Ics-blog is released under the GNU Public License.
 http://www.gnu.org/licenses/gpl.txt
 
 * Change log
 ============
+-> 1.0  - support for Google Calendar downloads
+-> 0.16 - added support for multi-line urls
 -> 0.15 - redefined the css and improved the interface
 -> 0.14 - added functionality to show a subset of entries in one page
 -> 0.13 - improved parsing to support Gnome Evolution ics calendars
@@ -27,11 +28,22 @@ http://www.gnu.org/licenses/gpl.txt
 - Open the file "class.config.php"
 - Edit the variable $csspath to the path of your stylesheets
   e.g. "/~me/css/"
+- Goto Google Calendar and create your own account
+- Use index.example.php as a template for your new index.php and update 
+  $icsblog = new ics_blog("http://www.google.com/calendar/ical/..."); 
+  with the link to your Google Calendar.
+  (Log in to Google Calendar, click Settings->Calendar Settings, 
+  choose Calendars, click on the name of your calendar, copy the 
+  address from Private Address->ICAL) 
 - Point your browser to your site
   e.g. http://localhost/~me/
 
 * Blog files
 ============
+- The default way of using ics-blog is to use an online Google
+  Calendar. But it is also possible to run ics-blog with a separate
+  ics file. See below;
+
 - The blog files are stored in ics/
 
 - The format is standard .ics format (RFC2445)

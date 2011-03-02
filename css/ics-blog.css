@@ -1,10 +1,10 @@
 .ics_header {
-	color: #aa0000;
-	font-family: serif;
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: normal;
 	text-decoration: none;
-	color: #c00;
+	color: #d70;
+	color: #9a9e23;
+	color: #777;
 	padding-top: 15px;
 	padding-bottom: 10px;
 }
@@ -16,7 +16,7 @@
 	padding-bottom: 5px;
 }
 .ics_bodytext {
-	font-size: 15px;
+	font-size: 18px;
 	font-weight: normal;
 	padding-top: 5px;
 	padding-bottom: 5px;
@@ -32,8 +32,9 @@
 }
 
 .ics_powered {
+	font-family: sans-serif;
         font-weight: normal;
-	font-size: 13px;
+	font-size: 11px;
 	padding-top: 5px;
 }
 
@@ -41,11 +42,27 @@
 .ics_listheader {
         font-weight: normal;
 	color: #444;
-	font-size: 15px;
+	font-size: 18px;
+	text-transform: uppercase;
 	padding-top: 10px;
 }
 
 a.ics_listheader {
+	text-transform: none;
+	color: #888;
+}
+
+.ics_listheader_small {
+	font-weight: normal;
+	font-size: 15px;
+	color: #444;
+	text-transform: uppercase;
+	padding-top: 10px;
+}
+
+a.ics_listheader_small {
+	text-transform: none;
+	font-size: 15px;
 	color: #888;
 }
 

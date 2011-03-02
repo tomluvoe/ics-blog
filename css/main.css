@@ -1,54 +1,125 @@
 body {
+	background: #efecda url(/img/main-bg.png) repeat-x 0 1px;
+	background: #fff url(/img/main-bg.png) repeat-x 0 1px;
 	background: #fff;
-	font-family: serif;
+	background: #eee;
+	font-family: Georgia,Cambria,"Times New Roman",Times,serif;
 	margin: 0px;
-}
-.head {
-	font-size: 40px;
-	letter-spacing: 0.7px;
-	padding-bottom: 14px;
 }
 .welcome {
 	font-size: 20px;
 	color: #d70;
+	color: #000;
 }
 .samoht {
         color: #d70;
 	color: #9a9e23;
+	color: #7d90a1;
+	color: #000;
 }
 a:hover {
 	text-decoration: underline;
 }
+a.samoht {
+	color: #aaa;
+	text-decoration: none;
+}
+a.black {
+	color: #000;
+}
+a.white {
+	color: #000;
+}
 table.main {
-	width: 100%;
+	width: 1000px;
 	border-spacing: 0px;
 	height: 100%;
 	font-size: 15px;
+	margin-left: auto;
+	margin-right: auto;
 }
 td.top {
-	font-family: sans-serif;
+	font-family: "Lucida Sans",sans-serif;
+	font-family: Georgia,Cambria,"Times New Roman",Times,serif;
 	color: #000;
+	color: #7d90a1;
 	font-weight: normal;
-	font-size: 13px;
+	font-size: 25px;
 	padding-left: 25px;
-	padding-top: 6px;
-	padding-bottom: 6px;
-	border-bottom: 1px solid #aaa;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	letter-spacing: 0.07em;
+	vertical-align: middle;
+	border-bottom: 1px solid #bbb;
+}
+td.menu {
+        font-family: "Lucida Sans",sans-serif;
+	font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+        color: #ccc;
+	color: #7d90a1;
+        font-weight: normal;
+        font-size: 18px;
+        padding-left: 25px;
+        padding-top: 12px;
+        padding-bottom: 11px;
+        background: #fff;
+	border-left: 1px solid #bbb;
+	border-right: 1px solid #bbb; 
+}
+td.highlight {
+	background: #ec0;
+	background: #ff8;
+	padding: 20px;
+	font-size: 24px;
+	border-right: 1px solid #bbb;
+	border-left: 1px solid #bbb;
+}
+a.highlight {
+	color: #f00;
 }
 a.top {
 	color: #000;
 }
+a.top:hover{
+	text-decoration: none;
+	color: #00a;
+}
 td.main {
 	height: 100%;
-	width: 550px;
+	width: 1600px;
 	vertical-align: top;
 	padding-top: 30px;
 	padding-left: 25px;
 	padding-bottom: 20px;
-	padding-right: 150px;
+	padding-right: 25px;
+	background: #fff;
+	border-left: 1px solid #bbb;
+	border-right: 1px solid #bbb;
+}
+td.mainad0 {
+        height: 100%;
+        width: 1400px;
+        vertical-align: top;
+        padding-top: 30px;
+        padding-left: 25px;
+        padding-bottom: 20px;
+        padding-right: 25px;
+        background: #fff;
+	border-left: 1px solid #bbb;
+}
+td.mainad1 {
+        height: 100%;
+        width: 200px;
+        vertical-align: top;
+        padding-top: 30px;
+        padding-left: 25px;
+        padding-bottom: 20px;
+        padding-right: 25px;
+        background: #fff;
+	border-right: 1px solid #bbb;
 }
 blockquote {
-	font-family: serif;
+	font-family: 'Courier New','Courier',serif;
 	background: #ffd;
 	border: solid 1px #fea;
 	border-left: solid 5px #fea;

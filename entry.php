@@ -1,7 +1,7 @@
 <html>
 <head>
-<title>Ics-blog, the simple blog management program at samoht.se</title>
-<link rel="stylesheet" href="/css/samoht.css" type="text/css"/>
+<title>Ics-Blog, the simple blog management program at samoht.se</title>
+
 <?php
 
 $include_path = "./bin";
@@ -9,9 +9,10 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $include_path);
 
 include("ics-blog.php");
 
-$icsblog = new ics_blog("ics/ics-blog.ics");
+$icsblog = new ics_blog("http://www.google.com/calendar/ical/oc00qs2bn1o5odabmc0obt25og%40group.calendar.google.com/private-5a4f1e288edb5cb817dccba3a7b71c2a/basic.ics");
 $icsblog->showcss();
 ?>
+
 </head>
 
 <body>
@@ -21,19 +22,14 @@ $icsblog->showcss();
 
 <tr>
 
-<td class="top">&nbsp;</td>
-
 <td class="top">
-Ics-Blog ::
-<a href="index.php">home</a>
- &gt; (ics-blog)</td>
 
-<td class="top">&nbsp;</td>
+Go back to the <a class="samoht" href="index.php">Blog</a>. 
+
+</td>
 
 </tr>
 <tr>
-
-<td>&nbsp;</td>
 
 <td class="main">
 
@@ -43,10 +39,10 @@ $icsblog->showentry();
 
 $icsblog->showdelimiter();
 $icsblog->poweredby();
-?>
-</td>
 
-<td>&nbsp;</td>
+?>
+
+</td>
 
 </tr>
 </tbody></table>

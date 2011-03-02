@@ -92,7 +92,7 @@ class blogdata {
 	public $dbg;
 	private $conf;
 
-	public $ver = "0.16";
+	public $ver = "1.0";
 	
 	private $entries = array();
 	private $showtype = array("ITEMFULL" => 0, "ITEMBRIEF" => 1, "ITEMLIST" => 2, "ITEMBRIEFLIST" => 3);
