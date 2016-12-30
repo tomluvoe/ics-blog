@@ -33,19 +33,19 @@ class ics_blog {
 	# display list with entries, with link, date, author etc
 	function showlatestfull($limit=10,$relurl="",$tags=0) {
 		$begin = $_GET["begin"];
-		$this->cblog->showlatest($limit,$begin,$tags,$relurl);
+		$this->cblog->showlatest($limit+$begin,$begin,$tags,$relurl);
 	}
 
 	# display list with entries, with link, date, author etc but limited header size and characters
 	function showlatestbrief($limit=10,$relurl="",$tags=0) {
 		$begin = $_GET["begin"];
-		$this->cblog->showlatestbrief($limit,$begin,$tags,$relurl);
+		$this->cblog->showlatestbrief($limit+$begin,$begin,$tags,$relurl);
 	}
 
 	# displays a list of entries, only with a links to each entry
 	function showlatestlist($limit=10,$relurl="",$tags=0) {
 		$begin = 0;
-		$this->cblog->showlatestlist($limit,$begin,$tags,$relurl);
+		$this->cblog->showlatestlist($limit+$begin,$begin,$tags,$relurl);
 	}
 
 	# display one entry, with link, date, author etc
